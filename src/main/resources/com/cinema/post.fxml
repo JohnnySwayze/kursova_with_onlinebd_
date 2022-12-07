@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.PostController">
+   <children>
+      <ScrollPane fx:id="scroll_pane" hbarPolicy="NEVER" hmax="0.0" prefHeight="700.0" prefWidth="900.0" vbarPolicy="ALWAYS" vmax="50.0" vvalue="50.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1600.0" prefWidth="901.0">
+               <children>
+                  <AnchorPane prefHeight="40.0" style="-fx-background-color: #FF00FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TextField fx:id="DateTime" focusTraversable="false" layoutX="714.0" layoutY="6.0" onAction="#controlldate" prefHeight="32.0" prefWidth="169.0" promptText="Оберіть дату сеансу" style="-fx-background-color: #FF00FF;" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
+                           <font>
+                              <Font name="Times New Roman" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutY="6.0" mnemonicParsing="false" onAction="#SwitchToMenu" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #FF00FF;" text="Menu" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0" />
+                        <Text layoutX="367.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Розплющ очі" wrappingWidth="166.6708984375">
+                           <font>
+                              <Font name="Times New Roman" size="27.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <GridPane layoutY="42.0" prefHeight="944.0" prefWidth="883.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="42.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" percentWidth="20.0" prefWidth="208.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="739.0" minWidth="10.0" prefWidth="674.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="262.0" minHeight="5.0" percentHeight="20.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="300.0" minHeight="-Infinity" percentHeight="100.0" prefHeight="122.0" valignment="CENTER" />
+                      <RowConstraints maxHeight="384.0" minHeight="0.0" percentHeight="30.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="396.0" minHeight="4.0" percentHeight="20.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="396.0" minHeight="10.0" percentHeight="30.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="396.0" minHeight="10.0" percentHeight="20.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="100.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="396.0" minHeight="0.0" percentHeight="30.0" prefHeight="6.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="396.0" minHeight="4.0" percentHeight="20.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" percentHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="396.0" minHeight="10.0" percentHeight="30.0" prefHeight="187.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="20.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="namemovie1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="208.0" />
+                        <Label fx:id="namemovie2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="208.0" GridPane.rowIndex="3" />
+                        <Label fx:id="namemovie3" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="208.0" GridPane.rowIndex="6" />
+                        <Label fx:id="namemovie4" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #fafafa;" GridPane.rowIndex="9" />
+                        <Label fx:id="descriptionmovie1" maxHeight="125.0" maxWidth="704.0" prefHeight="102.0" prefWidth="704.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="descriptionmovie2" layoutX="231.0" layoutY="26.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="693.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="descriptionmovie3" layoutX="231.0" layoutY="183.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="693.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label fx:id="descriptionmovie4" layoutX="231.0" layoutY="340.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="693.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Button fx:id="movie1attime1" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie1attime2" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie1attime3" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                           </children></HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <children>
+                              <Button fx:id="movie2attime1" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie2attime2" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie2attime3" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                           </children></HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <children>
+                              <Button fx:id="movie3attime1" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie3attime2" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie3attime3" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                           </children></HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <children>
+                              <Button fx:id="movie4attime1" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie4attime2" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                              <Button fx:id="movie4attime3" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
+                           </children></HBox>
+                        <ImageView fx:id="imgmovie1" fitHeight="212.0" fitWidth="176.0" pickOnBounds="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <ImageView fx:id="imgmovie2" fitHeight="211.0" fitWidth="178.0" pickOnBounds="true" GridPane.rowIndex="4" />
+                        <ImageView fx:id="imgmovie3" fitHeight="209.0" fitWidth="178.0" pickOnBounds="true" GridPane.rowIndex="7" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                           <children>
+                              <ImageView fx:id="imgpremieremovie1" fitHeight="213.0" fitWidth="235.0" pickOnBounds="true" />
+                              <ImageView fx:id="imgpremieremovie2" fitHeight="212.0" fitWidth="235.0" pickOnBounds="true" />
+                              <ImageView fx:id="imgpremieremovie3" fitHeight="214.0" fitWidth="235.0" pickOnBounds="true" />
+                           </children>
+                        </HBox>
+                        <ImageView fx:id="imgmovie4" fitHeight="211.0" fitWidth="178.0" pickOnBounds="true" GridPane.rowIndex="10" />
+                        <Label fx:id="age1" GridPane.columnIndex="1" />
+                        <Label fx:id="age2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="age3" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="age4" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                           <children>
+                              <HBox maxWidth="-Infinity" prefHeight="42.0" prefWidth="235.0">
+                                 <children>
+                                    <Label fx:id="premiername1" prefHeight="42.0" prefWidth="110.0" />
+                                    <Label fx:id="age_premier_1" prefHeight="42.0" prefWidth="95.0" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="42.0" prefWidth="235.0">
+                                 <children>
+                                    <Label fx:id="premiername2" prefHeight="42.0" prefWidth="162.0" />
+                                    <Label fx:id="age_premier_2" prefHeight="42.0" prefWidth="91.0" />
+                                 </children>
+                              </HBox>
+                              <HBox maxWidth="-Infinity" prefHeight="100.0" prefWidth="235.0">
+                                 <children>
+                                    <Label fx:id="premiername3" prefHeight="42.0" prefWidth="251.0" />
+                                    <Label fx:id="age_premier_3" prefHeight="42.0" prefWidth="127.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <Label fx:id="premierlabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="13">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

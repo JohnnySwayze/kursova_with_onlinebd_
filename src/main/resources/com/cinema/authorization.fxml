@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.AuthorizationController">
+   <children>
+      <AnchorPane layoutY="-4.0" prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #FF00FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="279.0" layoutY="14.0" text="Вхід">
+               <font>
+                  <Font name="Times New Roman" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="login_field" layoutX="123.0" layoutY="105.0" prefHeight="31.0" prefWidth="348.0" promptText="Email" AnchorPane.bottomAnchor="265.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="105.0" />
+      <PasswordField fx:id="password_field" layoutX="130.0" layoutY="170.0" prefHeight="31.0" prefWidth="340.0" promptText="Пароль" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="170.0" />
+      <Button layoutX="268.0" layoutY="226.0" mnemonicParsing="false" onAction="#AuthorizationBtn" text="Увійти" AnchorPane.bottomAnchor="144.0" AnchorPane.leftAnchor="268.0" AnchorPane.rightAnchor="268.0" AnchorPane.topAnchor="226.0" />
+      <Button layoutX="226.0" layoutY="292.0" mnemonicParsing="false" onAction="#SwitchToRegistration" prefHeight="31.0" prefWidth="148.0" text="Зареєструватися " AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="290.0" />
+      <Button layoutX="175.0" layoutY="345.0" mnemonicParsing="false" onAction="#SwitchToAfisha" text="Повернутися до перегляду афіши" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="345.0" />
+   </children>
+</AnchorPane>

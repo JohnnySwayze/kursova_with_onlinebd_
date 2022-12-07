@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema.HallAController">
+   <children>
+      <HBox layoutX="48.0" layoutY="186.0" prefHeight="157.0" prefWidth="252.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="186.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="77.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="77.0" text="Ряд1:" />
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="77.0" text="Ряд2:" />
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="32.0" prefWidth="77.0" text="Ряд3:" />
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="74.0" prefHeight="32.0" prefWidth="77.0" text="Ряд4:" />
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="32.0" prefWidth="77.0" text="Ряд5:" />
+               </children>
+            </VBox>
+            <FlowPane alignment="CENTER" prefHeight="162.0" prefWidth="176.0">
+               <children>
+                  <Button fx:id="btn1" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="17.0" text="1" />
+                  <Button fx:id="btn2" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="9.0" text="2" />
+                  <Button fx:id="btn3" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="12.0" text="3" />
+                  <Button fx:id="btn4" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="8.0" text="4" />
+                  <Button fx:id="btn5" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="4.0" text="5" />
+                  <Button fx:id="btn6" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="6" />
+                  <Button fx:id="btn7" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="15.0" text="1" />
+                  <Button fx:id="btn8" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="12.0" text="2" />
+                  <Button fx:id="btn9" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="13.0" text="3" />
+                  <Button fx:id="btn10" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="6.0" text="4" />
+                  <Button fx:id="btn11" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="5" />
+                  <Button fx:id="btn12" layoutX="126.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="6" />
+                  <Button fx:id="btn13" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="15.0" text="1" />
+                  <Button fx:id="btn14" layoutX="39.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="12.0" text="2" />
+                  <Button fx:id="btn15" layoutX="68.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="13.0" text="3" />
+                  <Button fx:id="btn16" layoutX="97.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="6.0" text="4" />
+                  <Button fx:id="btn17" layoutX="126.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="5" />
+                  <Button fx:id="btn18" layoutX="155.0" layoutY="41.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="6" />
+                  <Button fx:id="btn19" layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="15.0" text="1" />
+                  <Button fx:id="btn20" layoutX="39.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="12.0" text="2" />
+                  <Button fx:id="btn21" layoutX="68.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="13.0" text="3" />
+                  <Button fx:id="btn22" layoutX="97.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="6.0" text="4" />
+                  <Button fx:id="btn23" layoutX="126.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="5" />
+                  <Button fx:id="btn24" layoutX="155.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="6" />
+                  <Button fx:id="btn25" layoutX="10.0" layoutY="103.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="15.0" text="1" />
+                  <Button fx:id="btn26" layoutX="39.0" layoutY="103.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="12.0" text="2" />
+                  <Button fx:id="btn27" layoutX="68.0" layoutY="103.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="13.0" text="3" />
+                  <Button fx:id="btn28" layoutX="97.0" layoutY="103.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="6.0" text="4" />
+                  <Button fx:id="btn29" layoutX="126.0" layoutY="103.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="5" />
+                  <Button fx:id="btn30" layoutX="155.0" layoutY="103.0" mnemonicParsing="false" onAction="#getBuyBox" prefHeight="31.0" prefWidth="0.0" text="6" />
+               </children>
+            </FlowPane>
+         </children>
+      </HBox>
+      <VBox layoutX="339.0" layoutY="186.0" prefHeight="200.0" prefWidth="176.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="339.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="186.0">
+         <children>
+            <Label prefHeight="21.0" prefWidth="176.0" text="Дата:" />
+            <Label prefHeight="21.0" prefWidth="176.0" text="Назва фільму:" />
+            <Label prefHeight="21.0" prefWidth="176.0" text="Час сеансу:" />
+            <Label prefHeight="21.0" prefWidth="100.0" text="Зал:" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="131.0" fitWidth="113.0" layoutX="339.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="339.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="44.0" />
+      <ImageView fitHeight="58.0" fitWidth="200.0" layoutX="100.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane layoutX="182.0" layoutY="-1.0" prefHeight="361.0" prefWidth="600.0" style="-fx-background-color: #FF00FF;" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="280.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сеанс" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="279.34912109375" AnchorPane.rightAnchor="279.65087890625" AnchorPane.topAnchor="14.0" />
+         </children>
+      </AnchorPane>
+      <HBox fx:id="buybox" layoutX="110.0" layoutY="355.0" prefHeight="31.0" prefWidth="190.0" visible="false">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="89.0" text="Купити" />
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="102.0" text="Замовити" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
