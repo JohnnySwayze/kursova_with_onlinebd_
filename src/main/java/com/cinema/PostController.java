@@ -110,6 +110,7 @@ public class PostController {
     private boolean timeover;
     boolean is_date_true = true;
     private ArrayList<ImageView> imageViews = new ArrayList<>();
+    private int problem_with_date=0;
 
     public void SwitchToMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(HelloController.class.getResource("postmenu.fxml"));
@@ -123,12 +124,16 @@ public class PostController {
 
     public  void date_validity_check(String entered_date) {
 
-            String date_array[] = entered_date.split("\\.");
-            boolean isLeap = false;
-            boolean isValidDate = true;
-            int day = Integer.parseInt(date_array[0]);
-            int month = Integer.parseInt(date_array[1]);
-            int year = Integer.parseInt(date_array[2]);
+        String date_array[] = entered_date.split("\\.");
+        boolean isLeap = false;
+        boolean isValidDate = true;
+
+        int day = Integer.parseInt(date_array[0]);
+        int month = Integer.parseInt(date_array[1]);
+        int year = Integer.parseInt(date_array[2]);
+        if (date_array[0].length() == 2 && date_array[1].length() == 2
+                && date_array[2].length() == 4) {
+            problem_with_date=0;
             if (year % 4 == 0) {
                 isLeap = true;
             }
@@ -149,7 +154,15 @@ public class PostController {
                     isValidDate = false;
                 }
             }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Введіть дату правильно");
+            alert.setContentText("Введіть дату у форматі дд.мм.гггг");
+            alert.showAndWait();
+            problem_with_date=1;
         }
+    }
+
 
 
 
@@ -238,80 +251,82 @@ public class PostController {
                         alert.showAndWait();
                     } else {
                         date_validity_check(DateTime.getText());
-                        if (HelloController.getConnection == 1) {
-                            reserv.checkage(premier_name[s].getText());
-                            if (HelloController.age >= HelloController.movieage) {
-                                HelloController.age_limit = true;
-                            } else {
-                                HelloController.age_limit = false;
-                            }
-                        }
-                        FXMLLoader seans_Loader = new FXMLLoader(PostController.class.getResource("HallA.fxml"));
-                        try {
-                            seans_Loader.load();
-                            try {
-                                HallAController hallAController1 = seans_Loader.getController();
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-                                Date justtime = simpleDateFormat.parse(DateTime.getText());
-                                Date premiertime = simpleDateFormat.parse("25.12.2022");
-                                String url = "SELECT*FROM movies where moviename=?";
-                                try (PreparedStatement preparedStatement = db_conect.getToBD().prepareStatement(url)) {
-                                    if (s == 0) {
-                                        preparedStatement.setString(1, premiername1.getText());
-                                    }
-                                    if (s == 1) {
-                                        preparedStatement.setString(1, premiername2.getText());
-                                    }
-                                    if (s == 2) {
-                                        preparedStatement.setString(1, premiername3.getText());
-                                    }
-                                    ResultSet resultSet = preparedStatement.executeQuery();
-                                    while (resultSet.next()) {
-                                        Blob blob = resultSet.getBlob("moviepicture");
-                                        InputStream inputStream = blob.getBinaryStream();
-                                        Image image = new Image(inputStream);
-                                        if (justtime.getTime() - premiertime.getTime() >= 0) {
-
-                                            hallAController1.setPremierLabeles(simpleDateFormat.format(justtime), resultSet.getString("moviename"),
-                                                    resultSet.getString(" movietime1"), "F", image,
-                                                    resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString(" movietime1")),
-                                                    false);
-                                            reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString(" movietime1"));
-                                            reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString(" movietime1"));
-
-                                        }
-                                        if (justtime.equals(premiertime) || justtime.before(premiertime)) {
-                                            hallAController1.setPremierLabeles(simpleDateFormat.format(premiertime), resultSet.getString("moviename"),
-                                                    resultSet.getString(" movietime1"), "F", image,
-                                                    resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString(" movietime1")),
-                                                    true);
-                                            reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString(" movietime1"));
-                                            reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString(" movietime1"));
-
-                                        }
-
-                                    }
+                        if (problem_with_date == 0) {
+                            if (HelloController.getConnection == 1) {
+                                reserv.checkage(premier_name[s].getText());
+                                if (HelloController.age >= HelloController.movieage) {
+                                    HelloController.age_limit = true;
+                                } else {
+                                    HelloController.age_limit = false;
                                 }
-                            } catch (SQLException e) {
-                                e.printStackTrace();
                             }
+                            FXMLLoader seans_Loader = new FXMLLoader(PostController.class.getResource("HallA.fxml"));
+                            try {
+                                seans_Loader.load();
+                                try {
+                                    HallAController hallAController1 = seans_Loader.getController();
+                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+                                    Date justtime = simpleDateFormat.parse(DateTime.getText());
+                                    Date premiertime = simpleDateFormat.parse("25.12.2022");
+                                    String url = "SELECT*FROM movies where moviename=?";
+                                    try (PreparedStatement preparedStatement = db_conect.getToBD().prepareStatement(url)) {
+                                        if (s == 0) {
+                                            preparedStatement.setString(1, premiername1.getText());
+                                        }
+                                        if (s == 1) {
+                                            preparedStatement.setString(1, premiername2.getText());
+                                        }
+                                        if (s == 2) {
+                                            preparedStatement.setString(1, premiername3.getText());
+                                        }
+                                        ResultSet resultSet = preparedStatement.executeQuery();
+                                        while (resultSet.next()) {
+                                            Blob blob = resultSet.getBlob("moviepicture");
+                                            InputStream inputStream = blob.getBinaryStream();
+                                            Image image = new Image(inputStream);
+                                            if (justtime.getTime() - premiertime.getTime() >= 0) {
+
+                                                hallAController1.setPremierLabeles(simpleDateFormat.format(justtime), resultSet.getString("moviename"),
+                                                        resultSet.getString(" movietime1"), "F", image,
+                                                        resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString(" movietime1")),
+                                                        false);
+                                                reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString(" movietime1"));
+                                                reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString(" movietime1"));
+
+                                            }
+                                            if (justtime.equals(premiertime) || justtime.before(premiertime)) {
+                                                hallAController1.setPremierLabeles(simpleDateFormat.format(premiertime), resultSet.getString("moviename"),
+                                                        resultSet.getString(" movietime1"), "F", image,
+                                                        resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString(" movietime1")),
+                                                        true);
+                                                reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString(" movietime1"));
+                                                reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString(" movietime1"));
+
+                                            }
+
+                                        }
+                                    }
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
 
 
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            root = seans_Loader.getRoot();
+                            stage = new Stage();
+                            stage.setScene(new Scene(root));
+                            stage.setTitle("OYE");
+                            stage.setResizable(false);
+                            stage.initModality(Modality.WINDOW_MODAL);
+                            stage.initOwner(((Node) mouseEvent.getSource()).getScene().getWindow());
+                            stage.centerOnScreen();
+                            stage.showAndWait();
+
                         }
-                        root = seans_Loader.getRoot();
-                        stage = new Stage();
-                        stage.setScene(new Scene(root));
-                        stage.setTitle("OYE");
-                        stage.setResizable(false);
-                        stage.initModality(Modality.WINDOW_MODAL);
-                        stage.initOwner(((Node) mouseEvent.getSource()).getScene().getWindow());
-                        stage.centerOnScreen();
-                        stage.showAndWait();
-
                     }
                 } catch (ArrayIndexOutOfBoundsException e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -327,8 +342,10 @@ public class PostController {
                         alert.showAndWait();
                     }
                 }
+
             });
         }
+
         Button[] btn = {movie1attime1, movie1attime2, movie1attime3, movie2attime1, movie2attime2, movie2attime3, movie3attime1,
                 movie3attime2, movie3attime3, movie4attime1, movie4attime2, movie4attime3};
         Date now = new Date();
@@ -347,126 +364,127 @@ public class PostController {
                         date_validity_check(DateTime.getText());
                         FXMLLoader seans_Loader = new FXMLLoader(PostController.class.getResource("HallA.fxml"));
                         String dateofmov = DateTime.getText() + " " + btn[h];
+                        if (problem_with_date == 0) {
+                            if (h < 3) {
+                                if (HelloController.getConnection == 1) {
+                                    reserv.checkage(namemovie1.getText());
+                                    if (HelloController.age >= HelloController.movieage) {
+                                        HelloController.age_limit = true;
+                                    } else {
+                                        HelloController.age_limit = false;
+                                    }
+                                }
+                                if (h == 0) {
+                                    reserv.reserve_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime1.getText());
+                                    reserv.buy_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime1.getText());
+                                } else if (h == 1) {
+                                    reserv.reserve_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime2.getText());
+                                    reserv.buy_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime2.getText());
+                                } else if (h == 2) {
+                                    reserv.reserve_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime3.getText());
+                                    reserv.buy_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime3.getText());
+                                }
+                                try {
+                                    seans_Loader.load();
+                                    HallAController hela = seans_Loader.getController();
+                                    hela.setlabeles(DateTime.getText(), namemovie1.getText(), btn[h].getText(), "A", imgmovie1.getImage(), age1.getText(), dateofmov);
 
-                        if (h < 3) {
-                            if (HelloController.getConnection == 1) {
-                                reserv.checkage(namemovie1.getText());
-                                if (HelloController.age >= HelloController.movieage) {
-                                    HelloController.age_limit = true;
-                                } else {
-                                    HelloController.age_limit = false;
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            } else if (h > 2 && h < 6) {
+                                if (HelloController.getConnection == 1) {
+                                    reserv.checkage(namemovie2.getText());
+                                    if (HelloController.age >= HelloController.movieage) {
+                                        HelloController.age_limit = true;
+                                    } else {
+                                        HelloController.age_limit = false;
+                                    }
+                                }
+                                if (h == 3) {
+                                    reserv.reserve_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime1.getText());
+                                    reserv.buy_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime1.getText());
+                                } else if (h == 4) {
+                                    reserv.reserve_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime2.getText());
+                                    reserv.buy_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime2.getText());
+                                } else if (h == 5) {
+                                    reserv.reserve_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime3.getText());
+                                    reserv.buy_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime3.getText());
+                                }
+                                try {
+                                    seans_Loader.load();
+                                    HallAController hela = seans_Loader.getController();
+                                    hela.setlabeles(DateTime.getText(), namemovie2.getText(), btn[h].getText(), "B", imgmovie2.getImage(), age2.getText(), dateofmov);
+                                    //
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            } else if (h > 5 && h < 9) {
+                                if (HelloController.getConnection == 1) {
+                                    reserv.checkage(namemovie3.getText());
+                                    if (HelloController.age >= HelloController.movieage) {
+                                        HelloController.age_limit = true;
+                                    } else {
+                                        HelloController.age_limit = false;
+                                    }
+                                }
+                                if (h == 6) {
+                                    reserv.reserve_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime1.getText());
+                                    reserv.buy_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime1.getText());
+                                } else if (h == 7) {
+                                    reserv.reserve_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime2.getText());
+                                    reserv.buy_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime2.getText());
+                                } else if (h == 8) {
+                                    reserv.reserve_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime3.getText());
+                                    reserv.buy_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime3.getText());
+                                }
+                                try {
+                                    seans_Loader.load();
+                                    HallAController hela = seans_Loader.getController();
+                                    hela.setlabeles(DateTime.getText(), namemovie3.getText(), btn[h].getText(), "C", imgmovie3.getImage(), age3.getText(), dateofmov);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            } else if (h > 8) {
+                                if (HelloController.getConnection == 1) {
+                                    reserv.checkage(namemovie4.getText());
+                                    if (HelloController.age >= HelloController.movieage) {
+                                        HelloController.age_limit = true;
+                                    } else {
+                                        HelloController.age_limit = false;
+                                    }
+                                }
+                                if (h == 9) {
+                                    reserv.reserve_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime1.getText());
+                                    reserv.buy_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime1.getText());
+                                } else if (h == 10) {
+                                    reserv.reserve_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime2.getText());
+                                    reserv.buy_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime2.getText());
+                                } else if (h == 11) {
+                                    reserv.reserve_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime3.getText());
+                                    reserv.buy_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime3.getText());
+                                }
+                                try {
+                                    seans_Loader.load();
+                                    HallAController hela = seans_Loader.getController();
+                                    hela.setlabeles(DateTime.getText(), namemovie4.getText(), btn[h].getText(), "D", imgmovie4.getImage(), age4.getText(), dateofmov);
+                                    //
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
                                 }
                             }
-                            if (h == 0) {
-                                reserv.reserve_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime1.getText());
-                                reserv.buy_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime1.getText());
-                            } else if (h == 1) {
-                                reserv.reserve_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime2.getText());
-                                reserv.buy_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime2.getText());
-                            } else if (h == 2) {
-                                reserv.reserve_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime3.getText());
-                                reserv.buy_tickets(namemovie1.getText(), "A", DateTime.getText(), movie1attime3.getText());
-                            }
-                            try {
-                                seans_Loader.load();
-                                HallAController hela = seans_Loader.getController();
-                                hela.setlabeles(DateTime.getText(), namemovie1.getText(), btn[h].getText(), "A", imgmovie1.getImage(), age1.getText(), dateofmov);
 
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        } else if (h > 2 && h < 6) {
-                            if (HelloController.getConnection == 1) {
-                                reserv.checkage(namemovie2.getText());
-                                if (HelloController.age >= HelloController.movieage) {
-                                    HelloController.age_limit = true;
-                                } else {
-                                    HelloController.age_limit = false;
-                                }
-                            }
-                            if (h == 3) {
-                                reserv.reserve_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime1.getText());
-                                reserv.buy_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime1.getText());
-                            } else if (h == 4) {
-                                reserv.reserve_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime2.getText());
-                                reserv.buy_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime2.getText());
-                            } else if (h == 5) {
-                                reserv.reserve_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime3.getText());
-                                reserv.buy_tickets(namemovie2.getText(), "B", DateTime.getText(), movie2attime3.getText());
-                            }
-                            try {
-                                seans_Loader.load();
-                                HallAController hela = seans_Loader.getController();
-                                hela.setlabeles(DateTime.getText(), namemovie2.getText(), btn[h].getText(), "B", imgmovie2.getImage(), age2.getText(), dateofmov);
-                                //
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        } else if (h > 5 && h < 9) {
-                            if (HelloController.getConnection == 1) {
-                                reserv.checkage(namemovie3.getText());
-                                if (HelloController.age >= HelloController.movieage) {
-                                    HelloController.age_limit = true;
-                                } else {
-                                    HelloController.age_limit = false;
-                                }
-                            }
-                            if (h == 6) {
-                                reserv.reserve_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime1.getText());
-                                reserv.buy_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime1.getText());
-                            } else if (h == 7) {
-                                reserv.reserve_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime2.getText());
-                                reserv.buy_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime2.getText());
-                            } else if (h == 8) {
-                                reserv.reserve_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime3.getText());
-                                reserv.buy_tickets(namemovie3.getText(), "C", DateTime.getText(), movie3attime3.getText());
-                            }
-                            try {
-                                seans_Loader.load();
-                                HallAController hela = seans_Loader.getController();
-                                hela.setlabeles(DateTime.getText(), namemovie3.getText(), btn[h].getText(), "C", imgmovie3.getImage(), age3.getText(), dateofmov);
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        } else if (h > 8) {
-                            if (HelloController.getConnection == 1) {
-                                reserv.checkage(namemovie4.getText());
-                                if (HelloController.age >= HelloController.movieage) {
-                                    HelloController.age_limit = true;
-                                } else {
-                                    HelloController.age_limit = false;
-                                }
-                            }
-                            if (h == 9) {
-                                reserv.reserve_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime1.getText());
-                                reserv.buy_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime1.getText());
-                            } else if (h == 10) {
-                                reserv.reserve_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime2.getText());
-                                reserv.buy_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime2.getText());
-                            } else if (h == 11) {
-                                reserv.reserve_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime3.getText());
-                                reserv.buy_tickets(namemovie4.getText(), "D", DateTime.getText(), movie4attime3.getText());
-                            }
-                            try {
-                                seans_Loader.load();
-                                HallAController hela = seans_Loader.getController();
-                                hela.setlabeles(DateTime.getText(), namemovie4.getText(), btn[h].getText(), "D", imgmovie4.getImage(), age4.getText(), dateofmov);
-                                //
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
+
+                            root = seans_Loader.getRoot();
+                            stage = new Stage();
+                            stage.setScene(new Scene(root));
+                            stage.setTitle("OYE");
+                            stage.setResizable(false);
+                            stage.initModality(Modality.WINDOW_MODAL);
+                            stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+                            stage.centerOnScreen();
+                            stage.showAndWait();
                         }
-
-
-                        root = seans_Loader.getRoot();
-                        stage = new Stage();
-                        stage.setScene(new Scene(root));
-                        stage.setTitle("OYE");
-                        stage.setResizable(false);
-                        stage.initModality(Modality.WINDOW_MODAL);
-                        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
-                        stage.centerOnScreen();
-                        stage.showAndWait();
                     }
                     } catch(ArrayIndexOutOfBoundsException e){
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -487,6 +505,7 @@ public class PostController {
 
 
                 });
+
 
         }
         DateTime.setStyle("-fx-prompt-text-fill: black");
