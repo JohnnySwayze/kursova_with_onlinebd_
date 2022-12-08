@@ -122,6 +122,13 @@ public class PostController {
 
     }
 
+    private void call_error_window(String text1,String text2)
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(text1);
+        alert.setContentText(text2);
+        alert.showAndWait();
+    }
     public  void date_validity_check(String entered_date) {
 
         String date_array[] = entered_date.split("\\.");
@@ -131,35 +138,44 @@ public class PostController {
         int day = Integer.parseInt(date_array[0]);
         int month = Integer.parseInt(date_array[1]);
         int year = Integer.parseInt(date_array[2]);
+        problem_with_date=0;
         if (date_array[0].length() == 2 && date_array[1].length() == 2
                 && date_array[2].length() == 4) {
-            problem_with_date=0;
             if (year % 4 == 0) {
                 isLeap = true;
+
             }
             if (day < 1 || day > 31) {
-                isValidDate = false;
+                problem_with_date = 1;
+                call_error_window("Ви неправильно ввели номер дня ", "Спробуйте ще раз");
+
             }
             if (month < 1 || month > 12) {
-                isValidDate = false;
+                problem_with_date = 1;
+                call_error_window("Ви неправильно ввели номер місяця ", "Спробуйте ще раз");
+
             }
             if (month == 2 && day > 29 && isLeap == true) {
-                isValidDate = false;
+                problem_with_date = 1;
+                call_error_window("Ви неправильно ввели номер дня ", "Спробуйте ще раз");
+
             }
             if (month == 2 && day > 28 && isLeap == false) {
-                isValidDate = false;
+                problem_with_date = 1;
+                call_error_window("Ви неправильно ввели номер дня ", "Спробуйте ще раз");
+
             }
             if (month == 4 || month == 6 || month == 9 || month == 11) {
                 if (day > 30) {
-                    isValidDate = false;
+                    problem_with_date = 1;
+                    call_error_window("Ви неправильно ввели номер дня ", "Спробуйте ще раз");
                 }
             }
-        }else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Введіть дату правильно");
-            alert.setContentText("Введіть дату у форматі дд.мм.гггг");
-            alert.showAndWait();
+        }
+        else
+        {
             problem_with_date=1;
+            call_error_window("Ви неправильно дату", "Формат дати має бути дд.мм.гггг");
         }
     }
 
@@ -169,20 +185,17 @@ public class PostController {
 
     public void controlldate(ActionEvent Text) {
 
-        int flag=0;
+        int flag = 0;
         Date now = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date choicedate = null;
         int dayOfWeek = 0;
         try {
-            if (DateTime.getText().equals(""))
-            {
-                Alert alert =new Alert(Alert.AlertType.ERROR);
+            if (DateTime.getText().equals("")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Ви не обрали дату");
                 alert.showAndWait();
-            }
-            else
-            {
+            } else {
                 date_validity_check(DateTime.getText());
             }
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -190,17 +203,16 @@ public class PostController {
             alert.setHeaderText("Введіть дату правильно");
             alert.setContentText("Введіть дату у форматі дд.мм.гггг");
             alert.showAndWait();
-            flag=1;
-        }
-        catch (NumberFormatException e )
-        {
-            if (flag==0) {
+            flag = 1;
+        } catch (NumberFormatException e) {
+            if (flag == 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Введіть дату правильно");
                 alert.setContentText("Дату можна вводити тільки цифрами через крапку");
                 alert.showAndWait();
             }
         }
+        if (problem_with_date == 0) {
             try {
                 String date = simpleDateFormat.format(now);
 
@@ -211,7 +223,6 @@ public class PostController {
                 dayOfWeek = calendar1.get(Calendar.DAY_OF_WEEK);
 
             } catch (ParseException e) {
-
             }
             if (timeover) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -228,10 +239,7 @@ public class PostController {
                 DateTime.clear();
             }
         }
-
-
-
-
+    }
     @FXML
     private void initialize() {
 
@@ -361,6 +369,7 @@ public class PostController {
                         alert.setHeaderText("Ви не обрали дату");
                         alert.showAndWait();
                     } else {
+
                         date_validity_check(DateTime.getText());
                         FXMLLoader seans_Loader = new FXMLLoader(PostController.class.getResource("HallA.fxml"));
                         String dateofmov = DateTime.getText() + " " + btn[h];

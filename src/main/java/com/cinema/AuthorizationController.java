@@ -97,14 +97,14 @@ public class AuthorizationController {
             while(resultSet.next())
             {
                 id=resultSet.getInt(1);
-                c=resultSet.getInt("age");
+                //c=resultSet.getInt("age");
                 count++;
                 if (count>=1)
                 {
                     HelloController.email_user=emailText;
                     HelloController.id_user=id;
                     HelloController.getConnection=1;
-                    HelloController.age=c;
+                    //HelloController.age=c;
                 }
             }
         }

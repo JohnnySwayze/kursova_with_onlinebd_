@@ -444,6 +444,7 @@ public class PersonController {
                 this.nameofuser.setText(person_resset.getString("firstname"));
                 this.secondnameofuser.setText(person_resset.getString("lastname"));
                 this.ageofuser.setText(String.valueOf(person_resset.getInt("age")));
+                HelloController.age=person_resset.getInt("age");
             }
         }
         catch (SQLException e)
