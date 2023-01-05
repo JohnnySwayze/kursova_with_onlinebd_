@@ -63,10 +63,10 @@
                         <Label fx:id="namemovie2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="208.0" GridPane.rowIndex="3" />
                         <Label fx:id="namemovie3" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="208.0" GridPane.rowIndex="6" />
                         <Label fx:id="namemovie4" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #fafafa;" GridPane.rowIndex="9" />
-                        <Label fx:id="descriptionmovie1" maxHeight="125.0" maxWidth="704.0" prefHeight="102.0" prefWidth="704.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="descriptionmovie1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="704.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="descriptionmovie2" layoutX="231.0" layoutY="26.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="693.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="descriptionmovie3" layoutX="231.0" layoutY="183.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="693.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <Label fx:id="descriptionmovie4" layoutX="231.0" layoutY="340.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="693.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Label fx:id="descriptionmovie4" layoutX="231.0" layoutY="340.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="210.0" prefWidth="671.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <Button fx:id="movie1attime1" mnemonicParsing="false" style="-fx-background-color: #fafafa;" />
@@ -103,9 +103,11 @@
                         <ImageView fx:id="imgmovie3" fitHeight="209.0" fitWidth="178.0" pickOnBounds="true" GridPane.rowIndex="7" />
                         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                            <children>
-                              <ImageView fx:id="imgpremieremovie1" fitHeight="213.0" fitWidth="235.0" pickOnBounds="true" />
-                              <ImageView fx:id="imgpremieremovie2" fitHeight="212.0" fitWidth="235.0" pickOnBounds="true" />
-                              <ImageView fx:id="imgpremieremovie3" fitHeight="214.0" fitWidth="235.0" pickOnBounds="true" />
+                              <ImageView fx:id="imgpremieremovie1" fitHeight="215.0" fitWidth="220.0" pickOnBounds="true" />
+                              <ImageView fitHeight="215.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imgpremieremovie2" fitHeight="215.0" fitWidth="220.0" pickOnBounds="true" />
+                              <ImageView fitHeight="215.0" fitWidth="20.0" layoutX="245.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imgpremieremovie3" fitHeight="215.0" fitWidth="220.0" pickOnBounds="true" />
                            </children>
                         </HBox>
                         <ImageView fx:id="imgmovie4" fitHeight="211.0" fitWidth="178.0" pickOnBounds="true" GridPane.rowIndex="10" />
@@ -121,12 +123,14 @@
                                     <Label fx:id="age_premier_1" prefHeight="42.0" prefWidth="95.0" />
                                  </children>
                               </HBox>
+                              <ImageView fitHeight="42.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
                               <HBox prefHeight="42.0" prefWidth="235.0">
                                  <children>
                                     <Label fx:id="premiername2" prefHeight="42.0" prefWidth="162.0" />
                                     <Label fx:id="age_premier_2" prefHeight="42.0" prefWidth="91.0" />
                                  </children>
                               </HBox>
+                              <ImageView fitHeight="42.0" fitWidth="20.0" layoutX="239.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
                               <HBox maxWidth="-Infinity" prefHeight="100.0" prefWidth="235.0">
                                  <children>
                                     <Label fx:id="premiername3" prefHeight="42.0" prefWidth="251.0" />
@@ -139,6 +143,33 @@
                            <font>
                               <Font size="24.0" />
                            </font></Label>
+                        <ImageView fitHeight="212.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Button fx:id="change_btn1" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="2" />
+                        <Button fx:id="change_btn2" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="5" />
+                        <Button fx:id="change_btn3" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="8" />
+                        <Button fx:id="change_btn4" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="11" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="706.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                           <children>
+                              <Button fx:id="changepremier_btn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" text="Змінити" textAlignment="CENTER" textOverrun="CLIP" />
+                              <Label>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="changepremier_btn2" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" text="Змінити" />
+                              <Label>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="changepremier_btn3" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" text="Змінити" />
+                           </children>
+                        </HBox>
                      </children>
                   </GridPane>
                </children>

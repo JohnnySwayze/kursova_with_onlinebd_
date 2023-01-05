@@ -18,6 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
+
 public class PostController {
     @FXML
     private TextField DateTime;
@@ -99,7 +101,26 @@ public class PostController {
     @FXML
     private Label premiername3;
     @FXML
-    private ScrollPane scroll_pane;
+    private Button change_btn1;
+
+    @FXML
+    private Button change_btn2;
+
+    @FXML
+    private Button change_btn3;
+
+    @FXML
+    private Button change_btn4;
+
+    @FXML
+    private Button changepremier_btn1;
+
+    @FXML
+    private Button changepremier_btn2;
+
+    @FXML
+    private Button changepremier_btn3;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -129,7 +150,7 @@ public class PostController {
         alert.setContentText(text2);
         alert.showAndWait();
     }
-    public  void date_validity_check(String entered_date) {
+    private  void date_validity_check(String entered_date) {
 
         String date_array[] = entered_date.split("\\.");
         boolean isLeap = false;
@@ -192,36 +213,26 @@ public class PostController {
         int dayOfWeek = 0;
         try {
             if (DateTime.getText().equals("")) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Ви не обрали дату");
-                alert.showAndWait();
+                call_error_window("Ви не обрали дату","");
             } else {
                 date_validity_check(DateTime.getText());
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Введіть дату правильно");
-            alert.setContentText("Введіть дату у форматі дд.мм.гггг");
-            alert.showAndWait();
+            call_error_window("Введіть дату правильно","Введіть дату у форматі дд.мм.гггг");
             flag = 1;
         } catch (NumberFormatException e) {
             if (flag == 0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Введіть дату правильно");
-                alert.setContentText("Дату можна вводити тільки цифрами через крапку");
-                alert.showAndWait();
+                call_error_window("Введіть дату правильно","Дату можна вводити тільки цифрами через крапку");
             }
         }
         if (problem_with_date == 0) {
             try {
                 String date = simpleDateFormat.format(now);
-
                 choicedate = simpleDateFormat.parse(DateTime.getText());
                 timeover = choicedate.before(simpleDateFormat.parse(date));
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.setTime(choicedate);
                 dayOfWeek = calendar1.get(Calendar.DAY_OF_WEEK);
-
             } catch (ParseException e) {
             }
             if (timeover) {
@@ -246,7 +257,44 @@ public class PostController {
         reservetickets_.clear();
         ImageView[] img={imgpremieremovie1,imgpremieremovie2,imgpremieremovie3};
         Label [] premier_name={premiername1,premiername2,premiername3};
+        Button [] changebtn={ change_btn1,change_btn2,change_btn3,change_btn4,changepremier_btn1,changepremier_btn2,
+                changepremier_btn3};
+        for(int x=0;x< changebtn.length;x++) {
+            final int y = x;
+            changebtn[y].setOnMouseClicked(changebtnEvent -> {
+                try {
+                    root = FXMLLoader.load(PostController.class.getResource("change_window.fxml"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage = (Stage) ((Node) changebtnEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+            });
+            /*if (HelloController.admin == 0) {
+                changebtn[x].setVisible(false);
+            }
+            if (HelloController.admin == 1) {
 
+                changebtn[x].setVisible(true);
+                Change_Window_Controller.movie_id=y;
+                changebtn[y].setOnMouseClicked(changebtnEvent -> {
+                    try {
+                        root = FXMLLoader.load(PostController.class.getResource("change_window.fxml"));
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    stage = (Stage) ((Node) changebtnEvent.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                    stage.show();
+                });
+            }*/
+        }
         for(int t=0;t<img.length;t++) {
             final int s = t;
             img[s].setOnMouseClicked(mouseEvent ->

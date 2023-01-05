@@ -28,6 +28,25 @@ public class DatabaseHandler extends Configs {
         return connection;
 
     }
+    public String movie_title(int num)
+    {
+        String title=null;
+        String reserve="SELECT*FROM movies WHERE idmovies = ?";
+        try(PreparedStatement preparedStatement=getToBD().prepareStatement(reserve))
+        {
+            preparedStatement.setInt(1,num);
+            ResultSet resultSet1=preparedStatement.executeQuery();
+            while(resultSet1.next())
+            {
+                title=resultSet1.getString("moviename");
+            }
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return title;
+    }
     public void signUpUser(String firstname ,String lastname,Integer age,String email ,String password) {
         String insert = "INSERT INTO users(firstname,lastname,age,email,password) VALUES (?,?,?,?,?);";
 

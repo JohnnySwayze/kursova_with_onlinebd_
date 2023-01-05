@@ -30,6 +30,7 @@ public class HelloController {
     public static int movieage;
     public static boolean age_limit;
 
+    public static int admin ;
     DatabaseHandler databaseHandler=new DatabaseHandler();
     public void SwitchToPost(ActionEvent event) {
         try {

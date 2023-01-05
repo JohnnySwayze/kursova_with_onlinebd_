@@ -22,7 +22,7 @@ public class AuthorizationController {
     private Scene scene;
     private Parent root;
 
-    private int c;
+    private String name;
     private int id;
     public void SwitchToRegistration(ActionEvent event) throws IOException {
         root = FXMLLoader.load(PostMenuController.class.getResource("registration.fxml"));
@@ -97,14 +97,24 @@ public class AuthorizationController {
             while(resultSet.next())
             {
                 id=resultSet.getInt(1);
-                //c=resultSet.getInt("age");
+                name=resultSet.getString(2);
+
+
                 count++;
                 if (count>=1)
                 {
+                    if (name.equals("admin"))
+                    {
+                        HelloController.admin=1;
+                    }
+                    else
+                    {
+                        HelloController.admin=0;
+                    }
                     HelloController.email_user=emailText;
                     HelloController.id_user=id;
                     HelloController.getConnection=1;
-                    //HelloController.age=c;
+
                 }
             }
         }
