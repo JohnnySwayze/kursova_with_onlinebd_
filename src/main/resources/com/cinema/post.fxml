@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.PostController">
    <children>
-      <ScrollPane fx:id="scroll_pane" hbarPolicy="NEVER" hmax="0.0" prefHeight="700.0" prefWidth="900.0" vbarPolicy="ALWAYS" vmax="50.0" vvalue="50.0">
+      <ScrollPane fx:id="scroll_pane" hbarPolicy="NEVER" hmax="0.0" prefHeight="700.0" prefWidth="900.0" vbarPolicy="ALWAYS" vmax="50.0" vvalue="1.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1600.0" prefWidth="901.0">
                <children>
@@ -149,25 +149,25 @@
                         <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <ImageView fitHeight="210.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <Button fx:id="change_btn1" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="2" />
-                        <Button fx:id="change_btn2" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="5" />
-                        <Button fx:id="change_btn3" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="8" />
-                        <Button fx:id="change_btn4" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" text="Змінити" GridPane.rowIndex="11" />
+                        <Button fx:id="change_btn1" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" style="-fx-background-color: #fafafa;" text="Змінити" GridPane.rowIndex="2" />
+                        <Button fx:id="change_btn2" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" style="-fx-background-color: #fafafa;" text="Змінити" GridPane.rowIndex="5" />
+                        <Button fx:id="change_btn3" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" style="-fx-background-color: #fafafa;" text="Змінити" GridPane.rowIndex="8" />
+                        <Button fx:id="change_btn4" mnemonicParsing="false" prefHeight="100.0" prefWidth="178.0" style="-fx-background-color: #fafafa;" text="Змінити" GridPane.rowIndex="11" />
                         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="706.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
                            <children>
-                              <Button fx:id="changepremier_btn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" text="Змінити" textAlignment="CENTER" textOverrun="CLIP" />
+                              <Button fx:id="changepremier_btn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" style="-fx-background-color: #fafafa;" text="Змінити" textAlignment="CENTER" textOverrun="CLIP" />
                               <Label>
                                  <padding>
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
-                              <Button fx:id="changepremier_btn2" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" text="Змінити" />
+                              <Button fx:id="changepremier_btn2" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" style="-fx-background-color: #fafafa;" text="Змінити" />
                               <Label>
                                  <padding>
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
-                              <Button fx:id="changepremier_btn3" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" text="Змінити" />
+                              <Button fx:id="changepremier_btn3" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" style="-fx-background-color: #fafafa;" text="Змінити" />
                            </children>
                         </HBox>
                      </children>
