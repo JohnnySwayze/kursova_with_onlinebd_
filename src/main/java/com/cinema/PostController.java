@@ -261,26 +261,16 @@ public class PostController {
                 changepremier_btn3};
         for(int x=0;x< changebtn.length;x++) {
             final int y = x;
-            changebtn[y].setOnMouseClicked(changebtnEvent -> {
-                try {
-                    root = FXMLLoader.load(PostController.class.getResource("change_window.fxml"));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                stage = (Stage) ((Node) changebtnEvent.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.centerOnScreen();
-                stage.show();
-            });
-            /*if (HelloController.admin == 0) {
+
+            if (HelloController.admin == 0) {
                 changebtn[x].setVisible(false);
             }
-            if (HelloController.admin == 1) {
+            else{
 
                 changebtn[x].setVisible(true);
-                Change_Window_Controller.movie_id=y;
+
                 changebtn[y].setOnMouseClicked(changebtnEvent -> {
+                    Change_Window_Controller.movie_id=y+1;
                     try {
                         root = FXMLLoader.load(PostController.class.getResource("change_window.fxml"));
 
@@ -293,7 +283,7 @@ public class PostController {
                     stage.centerOnScreen();
                     stage.show();
                 });
-            }*/
+            }
         }
         for(int t=0;t<img.length;t++) {
             final int s = t;
@@ -343,20 +333,20 @@ public class PostController {
                                             if (justtime.getTime() - premiertime.getTime() >= 0) {
 
                                                 hallAController1.setPremierLabeles(simpleDateFormat.format(justtime), resultSet.getString("moviename"),
-                                                        resultSet.getString(" movietime1"), "F", image,
-                                                        resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString(" movietime1")),
+                                                        resultSet.getString("movietime1"), "F", image,
+                                                        resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString("movietime1")),
                                                         false);
-                                                reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString(" movietime1"));
-                                                reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString(" movietime1"));
+                                                reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString("movietime1"));
+                                                reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(justtime), resultSet.getString("movietime1"));
 
                                             }
                                             if (justtime.equals(premiertime) || justtime.before(premiertime)) {
                                                 hallAController1.setPremierLabeles(simpleDateFormat.format(premiertime), resultSet.getString("moviename"),
-                                                        resultSet.getString(" movietime1"), "F", image,
-                                                        resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString(" movietime1")),
+                                                        resultSet.getString("movietime1"), "F", image,
+                                                        resultSet.getString(String.valueOf("movieage")), (simpleDateFormat.format(premiertime) + " " + resultSet.getString("movietime1")),
                                                         true);
-                                                reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString(" movietime1"));
-                                                reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString(" movietime1"));
+                                                reserv.reserve_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString("movietime1"));
+                                                reserv.buy_tickets(resultSet.getString("moviename"), "F", simpleDateFormat.format(premiertime), resultSet.getString("movietime1"));
 
                                             }
 

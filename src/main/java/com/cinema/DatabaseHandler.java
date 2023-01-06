@@ -1,6 +1,7 @@
 package com.cinema;
 import com.mysql.cj.jdbc.Driver;
 
+import java.io.*;
 import java.sql.*;
 
 
@@ -27,6 +28,83 @@ public class DatabaseHandler extends Configs {
         }
         return connection;
 
+    }
+    public void change_movie(int action ,String url1 ,int id,String name , String picture_path,
+                             String description,String time1seans,String time2seans,String time3seans ,String age_limit)
+    {
+
+        String url="UPDATE movies SET "+url1+" WHERE idmovies="+id;
+        System.out.println(url);
+        try(PreparedStatement preparedStatement=getToBD().prepareStatement(url))
+        {
+            /*InputStream is = new FileInputStream(new File(picture_path));
+            preparedStatement.setBlob(1,is);
+            preparedStatement.setString(2,name);
+            preparedStatement.setString(3,description);
+            preparedStatement.setString(4,time1seans);
+            preparedStatement.setString(5,time2seans);
+            preparedStatement.setString(6,time3seans);
+            preparedStatement.setString(7,age_limit);*/
+            if (action == 1)
+            {
+                preparedStatement.setString(1,time1seans);
+            }
+            if(action == 2)
+            {
+                preparedStatement.setString(1,time2seans);
+            }
+            if(action == 3)
+            {
+                preparedStatement.setString(1,time3seans);
+            }
+            if(action == 11)
+            {
+                FileInputStream fileInputStream=new FileInputStream(new File(picture_path));
+                preparedStatement.setBinaryStream(1,fileInputStream);
+                preparedStatement.setString(2,name);
+                preparedStatement.setString(3,description);
+                preparedStatement.setString(4,time1seans);
+                preparedStatement.setInt(5,Integer.parseInt(age_limit));
+            }
+            if(action == 12)
+            {
+                FileInputStream fileInputStream=new FileInputStream(new File(picture_path));
+                preparedStatement.setBinaryStream(1,fileInputStream);
+                preparedStatement.setString(2,name);
+                preparedStatement.setString(3,description);
+                preparedStatement.setString(4,time2seans);
+                preparedStatement.setInt(5,Integer.parseInt(age_limit));
+            }
+            if(action == 13)
+            {
+                FileInputStream fileInputStream=new FileInputStream(new File(picture_path));
+                preparedStatement.setBinaryStream(1,fileInputStream);
+                preparedStatement.setString(2,name);
+                preparedStatement.setString(3,description);
+                preparedStatement.setString(4,time3seans);
+                preparedStatement.setInt(5,Integer.parseInt(age_limit));
+            }
+            if(action == 8)
+            {
+                preparedStatement.setString(1,time1seans);
+            }
+            if (action == 9)
+            {
+                System.out.println(picture_path);
+                FileInputStream fileInputStream=new FileInputStream(new File(picture_path));
+                preparedStatement.setBinaryStream(1,fileInputStream);
+                preparedStatement.setString(2,name);
+                preparedStatement.setString(3,description);
+                preparedStatement.setString(4,time1seans);
+                preparedStatement.setInt(5,Integer.parseInt(age_limit));
+            }
+            preparedStatement.executeUpdate();
+
+        }
+        catch(SQLException  | FileNotFoundException e )
+        {
+            e.printStackTrace();
+        }
     }
     public String movie_title(int num)
     {

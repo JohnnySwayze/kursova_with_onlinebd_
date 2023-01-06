@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.Change_Window_Controller">
+<AnchorPane fx:id="anch" prefHeight="458.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.Change_Window_Controller">
    <children>
       <AnchorPane layoutX="90.0" layoutY="20.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FF00FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,21 +17,23 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="269.0" layoutY="76.0" prefHeight="31.0" prefWidth="44.0" text="Фільм" AnchorPane.bottomAnchor="318.0" AnchorPane.topAnchor="76.0" />
-      <Label layoutX="142.0" layoutY="104.0" text="В поля нижче введіть данні ,які ви хочете змінити " />
-      <TextField layoutX="13.0" layoutY="163.0" prefHeight="31.0" prefWidth="562.0" />
-      <TextField layoutX="14.0" layoutY="216.0" prefHeight="31.0" prefWidth="562.0" />
-      <TextField layoutX="13.0" layoutY="268.0" prefHeight="31.0" prefWidth="562.0" />
-      <Label layoutX="14.0" layoutY="142.0" text="Назва фільму" />
-      <Label layoutX="14.0" layoutY="194.0" text="Афіша" />
-      <Label layoutX="13.0" layoutY="247.0" text="Опис фільму" />
-      <Label layoutX="13.0" layoutY="299.0" text="Час першого сеансу" />
-      <Label layoutX="250.0" layoutY="299.0" text="Час другого сеансу" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" />
-      <Label layoutX="437.0" layoutY="299.0" text="Час третього сеансу" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="25.0" />
-      <TextField layoutX="13.0" layoutY="320.0" prefHeight="31.0" prefWidth="139.0" AnchorPane.leftAnchor="13.0" />
-      <TextField layoutX="234.0" layoutY="320.0" prefHeight="31.0" prefWidth="132.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" />
-      <TextField layoutX="437.0" layoutY="320.0" prefHeight="31.0" prefWidth="138.0" AnchorPane.rightAnchor="25.0" />
-      <Button layoutX="234.0" layoutY="374.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="Змінити" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" />
-      <Label layoutX="313.0" layoutY="81.0" text="Label" />
+      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="177.0" layoutY="60.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="246.0" text="Фільм " textAlignment="CENTER" AnchorPane.topAnchor="60.0" />
+      <Label layoutX="141.0" layoutY="91.0" text="В поля нижче введіть данні ,які ви хочете змінити " />
+      <TextField fx:id="movie_title_field" layoutX="15.0" layoutY="148.0" prefHeight="31.0" prefWidth="562.0" promptText=" Введіть нову назву фільма" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="25.0" />
+      <TextField fx:id="picture_field" layoutX="15.0" layoutY="200.0" prefHeight="31.0" prefWidth="408.0" promptText="Вставте шлях до картинки " AnchorPane.leftAnchor="14.0" />
+      <TextField fx:id="moviedescription_field" layoutX="14.0" layoutY="252.0" prefHeight="31.0" prefWidth="562.0" promptText="Введіть опис фильму " AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="25.0" />
+      <Label layoutX="12.0" layoutY="127.0" text="Назва фільму" />
+      <Label layoutX="14.0" layoutY="179.0" text="Афіша" />
+      <Label layoutX="15.0" layoutY="231.0" text="Опис фільму" />
+      <Label layoutX="14.0" layoutY="347.0" text="Час першого сеансу" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="14.0" />
+      <Label fx:id="timeofthesecondseans_label" layoutX="234.0" layoutY="347.0" text="Час другого сеансу" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" />
+      <Label fx:id="timeofthethirdseans_label" layoutX="437.0" layoutY="347.0" text="Час третього сеансу" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="25.0" />
+      <TextField fx:id="timeofthefirstsession_field" layoutX="14.0" layoutY="373.0" prefHeight="31.0" prefWidth="139.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="14.0" />
+      <TextField fx:id="timeofthesecondsession_field" layoutX="234.0" layoutY="373.0" prefHeight="31.0" prefWidth="132.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" />
+      <TextField fx:id="timeofthethirdsession_field" layoutX="437.0" layoutY="373.0" prefHeight="31.0" prefWidth="138.0" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="25.0" />
+      <Button layoutX="234.0" layoutY="413.0" mnemonicParsing="false" onMouseClicked="#changes_btn" prefHeight="31.0" prefWidth="132.0" text="Змінити" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" />
+      <Button fx:id="choicepath_btn" layoutX="433.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#choise_path" prefHeight="31.0" prefWidth="147.0" text="Обрати шлях" AnchorPane.rightAnchor="25.0" />
+      <Label layoutX="12.0" layoutY="283.0" text="Вікове обмеження" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="457.0" />
+      <TextField fx:id="age_limit_field" layoutX="14.0" layoutY="304.0" prefHeight="31.0" prefWidth="561.0" promptText="Введіть вікове обмеження на фільм" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="25.0" />
    </children>
 </AnchorPane>
