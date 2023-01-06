@@ -79,7 +79,7 @@ public class Change_Window_Controller {
 
         if (timeofthesecondsession_field.isVisible())
         {
-            if ((!timeoffirstseans.equals("") || !timeofsecondseans.equals("") || !timeofthirdseans.equals(""))  )
+            if ((!timeoffirstseans.equals("") || !timeofsecondseans.equals("") || !timeofthirdseans.equals("")))
             {
 
                 if(!movie_name.equals("") && !picture_path.equals("") && !movie_description.equals("") && !agelimit.equals(""))
