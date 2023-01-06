@@ -84,6 +84,14 @@ public class DatabaseHandler extends Configs {
                 preparedStatement.setString(4,time3seans);
                 preparedStatement.setInt(5,Integer.parseInt(age_limit));
             }
+            if (action == 4)
+            {
+                FileInputStream fileInputStream=new FileInputStream(new File(picture_path));
+                preparedStatement.setBinaryStream(1,fileInputStream);
+                preparedStatement.setString(2,name);
+                preparedStatement.setString(3,description);
+                preparedStatement.setInt(4,Integer.parseInt(age_limit));
+            }
             if(action == 8)
             {
                 preparedStatement.setString(1,time1seans);

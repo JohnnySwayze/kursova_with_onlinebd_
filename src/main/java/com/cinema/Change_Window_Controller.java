@@ -79,7 +79,8 @@ public class Change_Window_Controller {
 
         if (timeofthesecondsession_field.isVisible())
         {
-            if ((!timeoffirstseans.equals("") || !timeofsecondseans.equals("") || !timeofthirdseans.equals("")))
+
+            if (!timeoffirstseans.equals("") || !timeofsecondseans.equals("") || !timeofthirdseans.equals(""))
             {
 
                 if(!movie_name.equals("") && !picture_path.equals("") && !movie_description.equals("") && !agelimit.equals(""))
@@ -122,23 +123,12 @@ public class Change_Window_Controller {
                             ,timeofthirdseans,agelimit);
                 }
             }
-            /*if (movie_name!=null && picture_path!=null && movie_description!=null && timeoffirstseans!=null
-                    && timeofsecondseans!=null && timeofthirdseans!=null && agelimit!=null)
+            if (!movie_name.equals("") && !picture_path.equals("") && !movie_description.equals("") && !agelimit.equals(""))
             {
-                String url="moviepicture=? and moviename=? and moviedescription =? and  movietime1=? and  movietime2=? and  movietime3=? movieage=?;";
-                try {
-                    handler.change_movie(url,movie_id,movie_name,picture_path,movie_description,timeoffirstseans,timeofsecondseans
-                            ,timeofthirdseans,agelimit);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+                String url="moviepicture=? , moviename=? , moviedescription =? ,movieage=?";
+                handler.change_movie(4,url,movie_id,movie_name,picture_path,movie_description,timeoffirstseans,timeofsecondseans
+                        ,timeofthirdseans,agelimit);
             }
-            if (movie_name!=null && picture_path!=null && movie_description!=null && timeoffirstseans!=null
-                    && timeofsecondseans!=null && agelimit == null )
-            {
-                String url="moviepicture=? and moviename=? and moviedescription =? and  movietime1=? and  movietime2=? and  movietime3=?;";
-                handler.change_movie(url,movie_id,movie_name,picture_path,movie_description,timeoffirstseans,timeofsecondseans,timeofthirdseans,agelimit);
-            }*/
         }
         if (!timeofthethirdsession_field.isVisible())
         {
