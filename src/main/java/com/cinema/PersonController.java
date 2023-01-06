@@ -405,11 +405,28 @@ public class PersonController {
                         refreshTable();
                         buybackbox.setVisible(false);
                     });
-                    //прописать загрузку файла для changeable
+
                 }
             }
         }
+        @FXML
+        void exitfromaccount(MouseEvent mouseEvent) {
+            HelloController.getConnection=0;
+            HelloController.admin=0;
+            try {
+                root = FXMLLoader.load(PersonController.class.getResource("post.fxml"));
+                stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
 
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     @FXML
     void initialize()
     {

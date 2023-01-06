@@ -15,8 +15,7 @@ import javafx.stage.Stage;
 
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+
 
 public class Change_Window_Controller {
     @FXML
