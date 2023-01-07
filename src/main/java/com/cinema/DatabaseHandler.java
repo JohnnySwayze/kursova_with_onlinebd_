@@ -37,14 +37,6 @@ public class DatabaseHandler extends Configs {
         System.out.println(url);
         try(PreparedStatement preparedStatement=getToBD().prepareStatement(url))
         {
-            /*InputStream is = new FileInputStream(new File(picture_path));
-            preparedStatement.setBlob(1,is);
-            preparedStatement.setString(2,name);
-            preparedStatement.setString(3,description);
-            preparedStatement.setString(4,time1seans);
-            preparedStatement.setString(5,time2seans);
-            preparedStatement.setString(6,time3seans);
-            preparedStatement.setString(7,age_limit);*/
             if (action == 1)
             {
                 preparedStatement.setString(1,time1seans);
