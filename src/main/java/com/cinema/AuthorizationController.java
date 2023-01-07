@@ -54,7 +54,6 @@ public class AuthorizationController {
                 stage.setScene(scene);
                 stage.centerOnScreen();
                 stage.show();
-
             }
             else
             {
