@@ -430,13 +430,8 @@ public class PersonController {
     @FXML
     void initialize()
     {
+        personimg.setImage(databaseHandler.download_picture(2));
 
-        try {
-            Image persimg=new Image(new FileInputStream("C:/Users/USER/IdeaProjects/kursova/src/main/resources/assets/person.png"));
-            personimg.setImage(persimg);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
 
         initData();
         tickets_id.setCellValueFactory(new PropertyValueFactory<>("id_tickets"));

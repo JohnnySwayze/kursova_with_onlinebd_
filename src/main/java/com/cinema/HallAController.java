@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
@@ -446,17 +445,7 @@ public class HallAController {
     }
     @FXML
     void initialize() {
-         try
-         {
-             String path=(new File("src/main/resources/assets/img_1.png")).getAbsolutePath();
-             System.out.println(path);
-             Image image =new Image(new FileInputStream(path));
-             screen.setImage(image);
-         }
-         catch (FileNotFoundException e)
-         {
-             throw new RuntimeException(e);
-         }
+         screen.setImage(handler.download_picture(1));
         Button b[] = {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10,
                 btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20,
                 btn21, btn22, btn23, btn24, btn25, btn26, btn27, btn28, btn29, btn30};

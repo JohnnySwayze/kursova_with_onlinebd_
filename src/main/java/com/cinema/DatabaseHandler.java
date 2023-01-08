@@ -1,5 +1,6 @@
 package com.cinema;
 import com.mysql.cj.jdbc.Driver;
+import javafx.scene.image.Image;
 
 import java.io.*;
 import java.sql.*;
@@ -9,26 +10,42 @@ import java.sql.*;
 
 public class DatabaseHandler extends Configs {
 
-    public static int  i;
+    public static int i;
     ResultSet resultSet;
     Connection connection;
 
-    public Connection getToBD()
-    {
+    public Connection getToBD() {
 
-        try
-        {
-            Driver driver=new Driver();
+        try {
+            Driver driver = new Driver();
             DriverManager.registerDriver(driver);
-            connection = DriverManager.getConnection(URL,dbUser,dbPass);
-        }
-        catch(SQLException e)
-        {
+            connection = DriverManager.getConnection(URL, dbUser, dbPass);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return connection;
 
     }
+
+    public Image download_picture(int id) {
+        Image image = null;
+        String url = "SELECT * FROM assets WHERE idassets=?";
+        try (PreparedStatement preparedStatement = getToBD().prepareStatement(url)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet1 = preparedStatement.executeQuery();
+            if (resultSet1.next()) {
+                Blob blob = resultSet1.getBlob(2);
+                InputStream inputStream = blob.getBinaryStream();
+                image = new Image(inputStream);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return  image;
+    }
+
     public void change_movie(int action ,String url1 ,int id,String name , String picture_path,
                              String description,String time1seans,String time2seans,String time3seans ,String age_limit)
     {
