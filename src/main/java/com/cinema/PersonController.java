@@ -432,7 +432,7 @@ public class PersonController {
     {
 
         try {
-            Image persimg=new Image(new FileInputStream("src/main/resources/assets/person.png"));
+            Image persimg=new Image(new FileInputStream("C:/Users/USER/IdeaProjects/kursova/src/main/resources/assets/person.png"));
             personimg.setImage(persimg);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

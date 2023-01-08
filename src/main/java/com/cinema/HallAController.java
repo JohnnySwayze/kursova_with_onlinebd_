@@ -447,7 +447,7 @@ public class HallAController {
     void initialize() {
          try
          {
-             Image image =new Image(new FileInputStream("src/main/resources/assets/img_1.png"));
+             Image image =new Image(new FileInputStream("C:/Users/USER/IdeaProjects/kursova/src/main/resources/assets/img_1.png"));
              screen.setImage(image);
          }
          catch (FileNotFoundException e)
