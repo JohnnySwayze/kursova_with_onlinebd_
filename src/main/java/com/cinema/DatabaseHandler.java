@@ -34,7 +34,6 @@ public class DatabaseHandler extends Configs {
     {
 
         String url="UPDATE movies SET "+url1+" WHERE idmovies="+id;
-        System.out.println(url);
         try(PreparedStatement preparedStatement=getToBD().prepareStatement(url))
         {
             if (action == 1)

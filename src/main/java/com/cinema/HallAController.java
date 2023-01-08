@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
@@ -447,7 +448,9 @@ public class HallAController {
     void initialize() {
          try
          {
-             Image image =new Image(new FileInputStream("C:/Users/USER/IdeaProjects/kursova/src/main/resources/assets/img_1.png"));
+             String path=(new File("src/main/resources/assets/img_1.png")).getAbsolutePath();
+             System.out.println(path);
+             Image image =new Image(new FileInputStream(path));
              screen.setImage(image);
          }
          catch (FileNotFoundException e)
