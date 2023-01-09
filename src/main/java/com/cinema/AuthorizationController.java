@@ -24,6 +24,7 @@ public class AuthorizationController {
 
     private String name;
     private int id;
+    DatabaseHandler handler =new DatabaseHandler();
     public void SwitchToRegistration(ActionEvent event) throws IOException {
         root = FXMLLoader.load(PostMenuController.class.getResource("registration.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -74,20 +75,10 @@ public class AuthorizationController {
         }
 
     }
-    Connection connection;
     private void loginUser(String emailText,String loginPassword) {
-        try
-        {
-            Driver driver=new Driver();
-            DriverManager.registerDriver(driver);
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Cinema","root","12345");
-        }
-        catch(SQLException e)
-        {
-            e.printStackTrace();
-        }
+
         String url1="SELECT * FROM users WHERE email=? and password = ? ;";
-        try(PreparedStatement preparedStatement=connection.prepareStatement(url1))
+        try(PreparedStatement preparedStatement=handler.getToBD().prepareStatement(url1))
         {
             preparedStatement.setString(1,emailText);
             preparedStatement.setString(2,loginPassword);

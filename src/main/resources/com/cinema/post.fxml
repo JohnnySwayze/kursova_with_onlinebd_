@@ -17,13 +17,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.PostController">
    <children>
-      <ScrollPane fx:id="scroll_pane" hbarPolicy="NEVER" hmax="0.0" prefHeight="700.0" prefWidth="900.0" vbarPolicy="ALWAYS" vmax="50.0" vvalue="1.0">
+      <ScrollPane fx:id="scroll_pane" hbarPolicy="NEVER" hmax="0.0" prefHeight="700.0" prefWidth="900.0" vbarPolicy="ALWAYS" vmax="50.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1600.0" prefWidth="901.0">
                <children>
                   <AnchorPane prefHeight="40.0" style="-fx-background-color: #FF00FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TextField fx:id="DateTime" focusTraversable="false" layoutX="714.0" layoutY="6.0" onAction="#controlldate" prefHeight="32.0" prefWidth="169.0" promptText="Оберіть дату сеансу" style="-fx-background-color: #FF00FF;" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
+                        <TextField fx:id="DateTime" focusTraversable="false" layoutX="624.0" layoutY="5.0" onAction="#controlldate" prefHeight="32.0" prefWidth="169.0" promptText="Введіть дату сеансу" style="-fx-background-color: #FF00FF;" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="5.0">
                            <font>
                               <Font name="Times New Roman" size="15.0" />
                            </font>
@@ -34,6 +34,7 @@
                               <Font name="Times New Roman" size="27.0" />
                            </font>
                         </Text>
+                        <Button layoutX="793.0" layoutY="6.0" mnemonicParsing="false" onAction="#controlldate" prefHeight="32.0" prefWidth="74.0" text="Ввести" AnchorPane.bottomAnchor="4.0" />
                      </children>
                   </AnchorPane>
                   <GridPane layoutY="42.0" prefHeight="944.0" prefWidth="883.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="42.0">

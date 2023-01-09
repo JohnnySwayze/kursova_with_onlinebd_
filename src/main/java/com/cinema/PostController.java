@@ -572,9 +572,9 @@ public class PostController {
 
         for (int i = 0; i <= 3; i++) {
             int k = i + 1;
-            db_conect.getToBD();
+
             String urlk = "SELECT*FROM movies WHERE idmovies=?";
-            try (PreparedStatement post_statementk = db_conect.connection.prepareStatement(urlk)) {
+            try (PreparedStatement post_statementk = db_conect.getToBD().prepareStatement(urlk)) {
                 Blob blobk;
                 post_statementk.setInt(1, k);
                 ResultSet resultSetk = post_statementk.executeQuery();
@@ -602,9 +602,9 @@ public class PostController {
             }
             for (int m = 0; m < 3; m++) {
                 int f = 5 + m;
-                db_conect.getToBD();
+
                 String urlf = "SELECT*FROM movies WHERE idmovies=?";
-                try (PreparedStatement preparedStatement_2 = db_conect.connection.prepareStatement(urlf)) {
+                try (PreparedStatement preparedStatement_2 = db_conect.getToBD().prepareStatement(urlf)) {
                     Blob blobf;
                     preparedStatement_2.setInt(1, f);
                     ResultSet resultSetf = preparedStatement_2.executeQuery();

@@ -11,7 +11,6 @@ import java.sql.*;
 public class DatabaseHandler extends Configs {
 
     public static int i;
-    ResultSet resultSet;
     Connection connection;
 
     public Connection getToBD() {
