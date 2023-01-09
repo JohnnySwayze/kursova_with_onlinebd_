@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
    DatabaseHandler h=new DatabaseHandler();
-     
     @Override
     public void start(Stage stage) throws IOException {
         try {
