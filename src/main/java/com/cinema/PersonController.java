@@ -303,7 +303,6 @@ public class PersonController {
                                 preparedStatement.setInt(1, tickets.getId_tickets());
                                 preparedStatement.execute();
                             } catch (SQLException e) {
-                                System.out.println("sddd");
                                 e.printStackTrace();
                             }
                             refreshTable();
