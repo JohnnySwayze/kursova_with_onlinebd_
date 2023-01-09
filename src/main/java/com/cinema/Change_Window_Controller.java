@@ -157,7 +157,6 @@ public class Change_Window_Controller {
     }
     @FXML
     void initialize() {
-        System.out.println(handler.movie_title(movie_id));
         title.setText("Фільм: '"+handler.movie_title(movie_id)+"'");
         if (movie_id>4)
         {

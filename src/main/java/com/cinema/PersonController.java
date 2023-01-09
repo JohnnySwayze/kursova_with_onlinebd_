@@ -12,13 +12,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -28,8 +25,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 public class PersonController {
     @FXML
     private Label id_user;
@@ -431,7 +426,6 @@ public class PersonController {
     void initialize()
     {
         personimg.setImage(databaseHandler.download_picture(2));
-
 
         initData();
         tickets_id.setCellValueFactory(new PropertyValueFactory<>("id_tickets"));

@@ -313,7 +313,7 @@ public class PostController {
                                     HallAController hallAController1 = seans_Loader.getController();
                                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
                                     Date justtime = simpleDateFormat.parse(DateTime.getText());
-                                    Date premiertime = simpleDateFormat.parse("25.12.2022");
+                                    Date premiertime = simpleDateFormat.parse("25.01.2023");
                                     String url = "SELECT*FROM movies where moviename=?";
                                     try (PreparedStatement preparedStatement = db_conect.getToBD().prepareStatement(url)) {
                                         if (s == 0) {

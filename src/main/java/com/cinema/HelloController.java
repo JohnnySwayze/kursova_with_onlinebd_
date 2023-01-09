@@ -145,10 +145,7 @@ public class HelloController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
-
-                }
-
-
     }
+
+
+}
